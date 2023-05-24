@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: rgb(83, 181, 181);
+    }
+    h1{
+        text-align: center;
+    }
+    #phim{
+        display: flex;
+        height: 25px;
+        justify-content: space-around;
+    }
+    #movie-container{
+        display: grid;
+        grid-template-columns:auto auto auto auto;
+        grid-gap: 10px;
+        margin: 50px;
+        width: 95%;
+        border: 1px solid black;
+    }
+   
+
+</style>
+<body>
+    <h1>THẾ GIỚI PHIM</h1>
+    <div id="phim">
+            <div id="all" onclick="addAll()">Tất cả</div>
+            <div href="" onclick="phd()">Hành động</div>
+            <div href="" onclick="pkd()">Kinh dị</div>
+            <div href="" onclick="ptc()">Tình cảm</div>
+    </div>
+    <div id="search">
+        <input type="text" id="searchName" placeholder="tim kiem" oninput="searchName()">
+        <button>Search Name</button>
+        
+    </div>
+    <div id="content">
+    </div>
+    <div id="movie-container">
+    </div>
+    <script>
+
+        let movie=[
+            {
+                name:"Godzilla vs. Kong",
+                img:"./hd1.jpeg",
+                type:"hành động",
+                date:"22h1-6-2023",
+                id:"hd"
+            },
+            {
+                name:"The King's Man ",
+                imge:"./hd2.jpeg",
+                type:"hành động",
+                date:"22h1-6-2023",
+                id:"hd"
+
+            },
+            {
+                name:"John Wick",
+                img:"./hd3.jpeg",
+                type:"hành động",
+                date:"22h1-6-2023",
+                id:"hd"
+
+            },
+            {
+                name:"Mama",
+                img:"./kd1.jpeg",
+                type:"kinh dị",
+                date:"22h1-6-2023",
+                id:"kd"
+            },
+            {
+                img:"./kd2.jpeg",
+                name:"Series Insidious",
+                type:"kinh dị",
+                date:"22h1-6-2023",
+                id:"kd"
+
+            },
+            {
+                img:"./kd3.jpeg",
+                name:"Series The Conjuring ",
+                type:"kinh dị",
+                date:"22h1-6-2023",
+                id:"kd"
+
+            },
+            {
+                img:"./tc1.jpeg",
+                name:"About Time",
+                type:"tình cảm",
+                date:"22h1-6-2023",
+                id:"tc"
+
+
+            },
+            {
+                img:"./tc2.jpeg",
+                name:"Endless Love",
+                type:"tình cảm",
+                date:"22h1-6-2023",
+                id:"tc"
+
+            },
+            {
+                img:"./tc3.jpeg",
+                name:"The Notebook",
+                type:"tình cảm",
+                date:"22h1-6-2023" ,
+                id:"tc"
+
+            },
+            {
+                img:"./tc4.jpeg",
+                name:"The Vow ",
+                type:"tình cảm",
+                date:"22h1-6-2023",
+                id:"tc"
+
+            }
+        ]
+    
+        
+        function addMovie(param) {
+            let result = "";
+            for (let i = 0; i < param.length; i++) {
+                result +=
+                    `
+                <div class="movie">
+                    <img src="${param[i].img}" alt="">
+                    <div class="movie-desc">
+                        <h4>${param[i].name}</h4>
+                        <p>${param[i].type}</p>
+                        <p>${param[i].date}</p>
+                    </div>
+                </div>
+        `
+            }
+            document.getElementById("movie-container").innerHTML = result
+        }
+
+        addMovie(movie);
+        function phd() {
+            let arr1 = [];
+            for (let i = 0; i < movie.length; i++) {
+                if (movie[i].id.includes("hd")) {
+                    arr1.push(movie[i]);
+                }
+            }
+            addMovie(arr1);
+        }
+        function pkd() {
+            let arr2 = [];
+            for (let i = 0; i < movie.length; i++) {
+                if (movie[i].id.includes("kd")) {
+                    arr2.push(movie[i]);
+                }
+            }
+
+            addMovie(arr2);
+        }
+        function ptc() {
+            let arr3 = [];
+            for (let i = 0; i < movie.length; i++) {
+                if (movie[i].id.includes("tc")) {
+                    arr3.push(movie[i]);
+                }
+            }
+            addMovie(arr3);
+        }
+        document.querySelector("#all").setAttribute("onClick", "javascript: addMovie(movie);");
+       
+
+  
+     
+    </script>
+</body>
+</html>
